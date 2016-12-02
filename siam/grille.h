@@ -4,7 +4,6 @@
 #include <stdlib.h>
 #include <vector>
 #include "pion.h"
-#include "pionjoueur.h"
 
 #ifdef _WIN32
 #ifdef _WIN64
@@ -32,7 +31,7 @@ class Grille {
   Grille();
   bool estVide(int x, int y);
   bool estDeType(int x, int y, TypePion t);
-  void ajouterPion(int x, int y, TypePion t);
+  void ajouterPion(int x, int y, TypePion t, Direction d);
   void retirerPion(int x, int y);
   void pivoterPion(int x, int y, Direction d);
   void deplacer(int x, int y, int dx, int dy);

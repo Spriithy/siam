@@ -48,23 +48,6 @@ void Grille::afficher() {
   }
 }
 
-void Grille::ajouterPion(int x, int y, TypePion t) {
-  switch (t) {
-    case ELEPHANT:
-      this->contenu[x][y] = new PionJoueur(ELEPHANT);
-      break;
-    case RHINOCEROS:
-      this->contenu[x][y] = new PionJoueur(RHINOCEROS);
-      break;
-    case MONTAGNE:
-      this->contenu[x][y] = new Vide();
-      break;
-    case VIDE:
-      this->contenu[x][y] = new Vide();
-      break;
-  }
-}
-
 void Grille::ajouterPion(int x, int y, TypePion t, Direction d) {
   switch (t) {
     case ELEPHANT:
@@ -98,10 +81,8 @@ void Grille::pivoterPion(int x, int y, Direction d) {
   }
 }
 
-void Grille::retirerPion(int x, int y) {
-    this->contenu[x][y] = *Pion();
-}
+void Grille::retirerPion(int x, int y) { this->contenu[x][y] = new Vide(); }
 
 void Grille::deplacer(int x, int y, int dx, int dy) {
-    this->contenu[x][y] = contenu[x+dx][y+dy];
+  this->contenu[x][y] = contenu[x + dx][y + dy];
 }
