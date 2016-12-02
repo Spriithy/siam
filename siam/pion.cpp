@@ -7,7 +7,22 @@ Pion::Pion() {
 
 void Pion::pivoter(Direction d) { this->d = d; }
 string Pion::texte() {
-  string s = " ";
+  string s = "";
+  switch (this->type) {
+    case VIDE:
+      return "  ";
+    case MONTAGNE:
+      s += "M";
+      break;
+    case ELEPHANT:
+      s += "E";
+    case RHINOCEROS:
+      s += "R";
+      break;
+    default:
+      s += "?";
+  }
+
   switch (this->d) {
     case HAUT:
       s += "^";
@@ -21,7 +36,7 @@ string Pion::texte() {
       s += "<";
     default:
       s += "?";
-      break;
   }
+
   return s;
 }
