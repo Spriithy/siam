@@ -42,7 +42,24 @@ void Grille::afficher() {
   }
 }
 
-void Grille::ajouterPion(int x, int y, TypePion t) {}
+void Grille::ajouterPion(int x, int y, TypePion t) {
+switch(t)
+    {
+    case ELEPHANT:
+        this->contenu[x][y] = new PionJoueur(ELEPHANT);
+        break;
+    case RHINOCEROS:
+        this->contenu[x][y] = new PionJoueur(RHINOCEROS);
+        break;
+    case MONTAGNE:
+        this->contenu[x][y] = new Vide();
+        break;
+    case VIDE:
+        this->contenu[x][y] = new Vide();
+        break;
+    }
+    }
+
 
 void Grille::pivoterPion(int x, int y, Direction d) {}
 
