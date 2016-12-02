@@ -21,4 +21,5 @@ HEADERS += \
     vide.h
 
 DISTFILES += \
-    siam.pro.user
+    siam.pro.user \
+    .gitignore
