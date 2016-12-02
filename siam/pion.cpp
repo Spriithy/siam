@@ -13,9 +13,9 @@ string Pion::texte() {
       return "  ";
     case MONTAGNE:
       return "M ";
-      break;
     case ELEPHANT:
       s += "E";
+      break;
     case RHINOCEROS:
       s += "R";
       break;

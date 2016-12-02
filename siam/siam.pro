@@ -6,18 +6,10 @@ CONFIG -= qt
 SOURCES += main.cpp \
     pion.cpp \
     grille.cpp \
-    manager.cpp \
-    montagne.cpp \
-    pionjoueur.cpp \
-    vide.cpp
+    manager.cpp
 
 HEADERS += \
     pion.h \
     direction.h \
     grille.h \
-    manager.h \
-    vide.h
-
-DISTFILES += \
-    siam.pro.user \
-    .gitignore
+    manager.h

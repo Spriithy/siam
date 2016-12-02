@@ -21,12 +21,12 @@ class Pion {
 
 class Montagne : public Pion {
  public:
-  Montagne() {}
+  Montagne() { this->type = MONTAGNE; }
 };
 
 class Vide : public Pion {
  public:
-  Vide() {}
+  Vide() { this->type = VIDE; }
 };
 
 class PionJoueur : public Pion {
