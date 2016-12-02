@@ -7,7 +7,7 @@ using namespace std;
 
 enum Direction { INVALIDE, HAUT, BAS, DROITE, GAUCHE };
 
-Direction convertir(char d) {
+Direction convertirDirection(char d) {
   switch (d) {
     case 'H':
       return HAUT;
