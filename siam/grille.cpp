@@ -17,6 +17,12 @@ Grille::Grille() {
   this->contenu[2][3] = new Montagne();
 }
 
+bool Grille::estVide(int x, int y) { return this->contenu[x][y]->type != VIDE; }
+
+bool Grille::estDeType(int x, int y, TypePion t) {
+  return this->contenu[x][y]->type == t;
+}
+
 void Grille::afficher() {
   string vertM = "┃", vertHG = "┏", vertHD = "┓", vertBG = "┗", vertBD = "┛",
          horM = "━", horLG = "┣", horLD = "┫", horL4 = "╋", horLB = "┻",
@@ -43,57 +49,53 @@ void Grille::afficher() {
 }
 
 void Grille::ajouterPion(int x, int y, TypePion t) {
-switch(t)
-    {
+  switch (t) {
     case ELEPHANT:
-        this->contenu[x][y] = new PionJoueur(ELEPHANT);
-        break;
+      this->contenu[x][y] = new PionJoueur(ELEPHANT);
+      break;
     case RHINOCEROS:
-        this->contenu[x][y] = new PionJoueur(RHINOCEROS);
-        break;
+      this->contenu[x][y] = new PionJoueur(RHINOCEROS);
+      break;
     case MONTAGNE:
-        this->contenu[x][y] = new Vide();
-        break;
+      this->contenu[x][y] = new Vide();
+      break;
     case VIDE:
-        this->contenu[x][y] = new Vide();
-        break;
-    }
-    }
+      this->contenu[x][y] = new Vide();
+      break;
+  }
+}
 
 void Grille::ajouterPion(int x, int y, TypePion t, Direction d) {
-    switch(t)
-    {
+  switch (t) {
     case ELEPHANT:
-        this->contenu[x][y] = new PionJoueur(ELEPHANT, d);
-        break;
+      this->contenu[x][y] = new PionJoueur(ELEPHANT, d);
+      break;
     case RHINOCEROS:
-        this->contenu[x][y] = new PionJoueur(RHINOCEROS, d);
-        break;
+      this->contenu[x][y] = new PionJoueur(RHINOCEROS, d);
+      break;
     case MONTAGNE:
-        this->contenu[x][y] = new Vide();
-        break;
+      this->contenu[x][y] = new Vide();
+      break;
     case VIDE:
-        this->contenu[x][y] = new Vide();
-        break;
-    }
+      this->contenu[x][y] = new Vide();
+      break;
+  }
 }
 
 void Grille::pivoterPion(int x, int y, Direction d) {
-    switch(d)
-    {
+  switch (d) {
     case HAUT:
-        this->contenu[x][y]->d = d;
-        break;
+      this->contenu[x][y]->d = d;
+      break;
     case BAS:
-        this->contenu[x][y]->d = d;
-        break;
+      this->contenu[x][y]->d = d;
+      break;
     case DROITE:
-        this->contenu[x][y]->d = d;
-        break;
+      this->contenu[x][y]->d = d;
+      break;
     case GAUCHE:
-        this->contenu[x][y]->d = d;
-
-    }
+      this->contenu[x][y]->d = d;
+  }
 }
 
 void Grille::retirerPion(int x, int y) {

@@ -18,7 +18,8 @@ HEADERS += \
     manager.h \
     montagne.h \
     pionjoueur.h \
-    vide.h
+    vide.h \
+    montagne.h
 
 DISTFILES += \
     siam.pro.user \
