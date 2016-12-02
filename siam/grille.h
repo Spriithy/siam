@@ -32,6 +32,8 @@ class Grille {
 
  public:
   Grille();
+  bool estVide(int x, int y) { return this->contenu[x][y]->type != VIDE; }
+
   void ajouterPion(int x, int y, TypePion t);
   void retirerPion(int x, int y);
   void pivoterPion(int x, int y, Direction d);
