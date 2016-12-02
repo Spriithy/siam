@@ -5,9 +5,13 @@ CONFIG -= qt
 
 SOURCES += main.cpp \
     pion.cpp \
-    grille.cpp
+    grille.cpp \
+    manager.cpp \
+    action.cpp
 
 HEADERS += \
     pion.h \
     direction.h \
-    grille.h
+    grille.h \
+    manager.h \
+    action.h
