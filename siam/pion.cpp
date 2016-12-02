@@ -12,7 +12,7 @@ string Pion::texte() {
     case VIDE:
       return "  ";
     case MONTAGNE:
-      s += "M";
+      return "M ";
       break;
     case ELEPHANT:
       s += "E";

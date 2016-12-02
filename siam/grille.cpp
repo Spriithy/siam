@@ -5,14 +5,16 @@
 using namespace std;
 
 Grille::Grille() {
-  this->contenu = vector<vector<Pion> >();
-  this->contenu.reserve(5);
-  for (auto c : this->contenu) {
-    c.reserve(5);
-    for (int i = 0; i < 5; i++) {
-      c[i] = Pion();
+  for (int i = 0; i < 5; i++) {
+    for (int j = 0; j < 5; j++) {
+      this->contenu[i][j] = new Pion();
     }
   }
+
+  // Montagnes
+  this->contenu[2][1] = new Montagne();
+  this->contenu[2][2] = new Montagne();
+  this->contenu[2][3] = new Montagne();
 }
 
 void Grille::afficher() {
@@ -25,8 +27,7 @@ void Grille::afficher() {
   cout << horM << horM << vertHD << endl;
   for (int i = 0; i < 5; i++) {
     cout << vertM;
-    for (int j = 0; j < 5; j++)
-      cout << this->contenu.at(i).at(j).texte() << vertM;
+    for (int j = 0; j < 5; j++) cout << this->contenu[i][j]->texte() << vertM;
     cout << endl;
 
     if (i == 4) {
@@ -40,3 +41,11 @@ void Grille::afficher() {
     cout << endl;
   }
 }
+
+void Grille::ajouterPion(int x, int y, TypePion t) {}
+
+void Grille::pivoterPion(int x, int y, Direction d) {}
+
+void Grille::retirerPion(int x, int y) {}
+
+void Grille::deplacer(int x, int y, int dx, int dy) {}

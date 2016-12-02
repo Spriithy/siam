@@ -7,11 +7,20 @@ SOURCES += main.cpp \
     pion.cpp \
     grille.cpp \
     manager.cpp \
-    action.cpp
+    action.cpp \
+    montagne.cpp \
+    pionjoueur.cpp \
+    vide.cpp
 
 HEADERS += \
     pion.h \
     direction.h \
     grille.h \
     manager.h \
-    action.h
+    action.h \
+    montagne.h \
+    pionjoueur.h \
+    vide.h
+
+DISTFILES += \
+    siam.pro.user

@@ -3,10 +3,12 @@
 
 #include <stdlib.h>
 #include <vector>
+#include "montagne.h"
 #include "pion.h"
+#include "pionjoueur.h"
+#include "vide.h"
 
 #ifdef _WIN32
-// define something for Windows (32-bit and 64-bit, this part is common)
 #ifdef _WIN64
 #define CLEAR() system("cls")
 #endif
@@ -14,23 +16,26 @@
 #define CLEAR() system("clear")
 #elif __linux__
 #define CLEAR() system("clear")
-#elif __unix__  // all unices not caught above
+#elif __unix__
 #define CLEAR() system("clear")
 #elif defined(_POSIX_VERSION)
 #define CLEAR() system("clear")
 #else
-#error "Unknown compiler"
+#error "COmpilateur inconnu"
 #endif
 
 using namespace std;
 
 class Grille {
  private:
-  vector<vector<Pion> > contenu;
+  Pion* contenu[5][5];
 
  public:
   Grille();
-  void ajouterPion(TypePion t);
+  void ajouterPion(int x, int y, TypePion t);
+  void retirerPion(int x, int y);
+  void pivoterPion(int x, int y, Direction d);
+  void deplacer(int x, int y, int dx, int dy);
   void afficher();
 };
 
