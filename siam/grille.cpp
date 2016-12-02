@@ -1,4 +1,4 @@
-#include "grille.h"
+﻿#include "grille.h"
 #include <iostream>
 #include <string>
 
@@ -60,8 +60,41 @@ switch(t)
     }
     }
 
+void Grille::ajouterPion(int x, int y, TypePion t, Direction d) {
+    switch(t)
+    {
+    case ELEPHANT:
+        this->contenu[x][y] = new PionJoueur(ELEPHANT, d);
+        break;
+    case RHINOCEROS:
+        this->contenu[x][y] = new PionJoueur(RHINOCEROS, d);
+        break;
+    case MONTAGNE:
+        this->contenu[x][y] = new Vide();
+        break;
+    case VIDE:
+        this->contenu[x][y] = new Vide();
+        break;
+    }
+}
 
-void Grille::pivoterPion(int x, int y, Direction d) {}
+void Grille::pivoterPion(int x, int y, Direction d) {
+    switch(d)
+    {
+    case HAUT:
+        this->contenu[x][y]->d = d;
+        break;
+    case BAS:
+        this->contenu[x][y]->d = d;
+        break;
+    case DROITE:
+        this->contenu[x][y]->d = d;
+        break;
+    case GAUCHE:
+        this->contenu[x][y]->d = d;
+
+    }
+}
 
 void Grille::retirerPion(int x, int y) {}
 

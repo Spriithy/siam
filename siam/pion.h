@@ -10,9 +10,9 @@ enum TypePion { VIDE, MONTAGNE, RHINOCEROS, ELEPHANT };
 
 class Pion {
  private:
-  Direction d;
 
  public:
+  Direction d;
   TypePion type;
 
   Pion();

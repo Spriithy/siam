@@ -11,5 +11,8 @@ using namespace std;
 class PionJoueur: public Pion
 {
 public:
-    PionJoueur();
+    PionJoueur(TypePion t, Direction d) {
+    this->d = d;
+    this->type = t;
+    }
 };
