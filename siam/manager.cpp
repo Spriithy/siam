@@ -75,7 +75,7 @@ void PivoterPion()
     while ((x<0) || (x>5)|| (y<0) || (y>5) )
     {
         cout<<"les coordonnées choisies sont erronées"<<endl;
-        cout<<"Vous avez choisi de rentrer un pion sur la grille"<<endl;
+        cout<<"vous avez choisi de changer la direction d'un de vos pions"<<endl;
         cout<<"Indiquez les coordonnées voulues"<<endl;
         cout<<"Quelle colonne? ( 1,2,3,4 ou 5)"<<endl;
         cin>>x;
@@ -97,6 +97,35 @@ void PivoterPion()
 
     }
 
+
+
+
+}
+
+void RetirerPion()
+{
+    int x,y;
+    cout<<"vous avez choisi d'enlever un pion de la grille"<<endl;
+    cout<<"Quelles sont ses coordonnées?"<<endl;
+    cout<<"Quelle colonne? ( 1,2,3,4 ou 5)"<<endl;
+    cin>>x;
+    cout<<"Quelle ligne? ( 1,2,3,4 ou 5)"<<endl;
+    cin>>y;
+
+    while ((x<0) || (x>5)|| (y<0) || (y>5) )
+    {
+        cout<<"les coordonnées choisies sont erronées"<<endl;
+        cout<<"vous avez choisi d'enlever un pion de la grille"<<endl;
+        cout<<"Indiquez les coordonnées voulues"<<endl;
+        cout<<"Quelle colonne? ( 1,2,3,4 ou 5)"<<endl;
+        cin>>x;
+        cout<<"Quelle ligne? ( 1,2,3,4 ou 5)"<<endl;
+        cin>>y;
+    }
+
+    while ( grille-> )
+
+    this->grille->RetirerPion(x,y);
 
 
 

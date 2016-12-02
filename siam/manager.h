@@ -13,6 +13,7 @@ public:
 
     void AjouterPion();
     void PivoterPion();
+    void RetirerPion();
 };
 
 #endif // MANAGER_H
