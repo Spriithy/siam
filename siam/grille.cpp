@@ -96,6 +96,10 @@ void Grille::pivoterPion(int x, int y, Direction d) {
     }
 }
 
-void Grille::retirerPion(int x, int y) {}
+void Grille::retirerPion(int x, int y) {
+    this->contenu[x][y] = *Pion();
+}
 
-void Grille::deplacer(int x, int y, int dx, int dy) {}
+void Grille::deplacer(int x, int y, int dx, int dy) {
+    this->contenu[x][y] = contenu[x+dx][y+dy];
+}

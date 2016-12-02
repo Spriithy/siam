@@ -3,10 +3,8 @@
 
 #include <stdlib.h>
 #include <vector>
-#include "montagne.h"
 #include "pion.h"
 #include "pionjoueur.h"
-#include "vide.h"
 
 #ifdef _WIN32
 #ifdef _WIN64
