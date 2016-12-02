@@ -4,8 +4,10 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += main.cpp \
-    pion.cpp
+    pion.cpp \
+    grille.cpp
 
 HEADERS += \
     pion.h \
-    direction.h
+    direction.h \
+    grille.h
