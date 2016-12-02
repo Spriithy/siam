@@ -5,6 +5,21 @@
 
 using namespace std;
 
-enum Direction { HAUT, BAS, DROITE, GAUCHE };
+enum Direction { INVALIDE, HAUT, BAS, DROITE, GAUCHE };
+
+Direction convertir(char d) {
+  switch (d) {
+    case 'H':
+      return HAUT;
+    case 'B':
+      return BAS;
+    case 'D':
+      return DROITE;
+    case 'G':
+      return GAUCHE;
+    default:
+      return INVALIDE;
+  }
+}
 
 #endif  // DIRECTION_H

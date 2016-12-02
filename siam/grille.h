@@ -28,7 +28,7 @@ using namespace std;
 
 class Grille {
  private:
-  Pion* contenu[5][5];
+  Pion* contenu[5][5];  // contenu[x][y]
 
  public:
   Grille();
