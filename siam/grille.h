@@ -33,6 +33,9 @@ class Grille {
  public:
   Grille();
   bool estVide(int x, int y) { return this->contenu[x][y]->type != VIDE; }
+  bool estDeType(int x, int y, TypePion t) {
+    return this->contenu[x][y]->type == t;
+  }
 
   void ajouterPion(int x, int y, TypePion t);
   void retirerPion(int x, int y);
