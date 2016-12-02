@@ -7,7 +7,6 @@ SOURCES += main.cpp \
     pion.cpp \
     grille.cpp \
     manager.cpp \
-    action.cpp \
     montagne.cpp \
     pionjoueur.cpp \
     vide.cpp
@@ -17,7 +16,6 @@ HEADERS += \
     direction.h \
     grille.h \
     manager.h \
-    action.h \
     montagne.h \
     pionjoueur.h \
     vide.h
