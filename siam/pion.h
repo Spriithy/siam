@@ -15,8 +15,8 @@ class Pion {
   TypePion type;
 
   Pion();
-  string texte();
-  void pivoter(Direction d);
+  string Texte();
+  void Pivoter(Direction d);
 };
 
 class Montagne : public Pion {

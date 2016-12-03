@@ -29,13 +29,13 @@ class Grille {
 
  public:
   Grille();
-  bool estVide(int x, int y);
-  bool estDeType(int x, int y, TypePion t);
-  void ajouterPion(int x, int y, TypePion t, Direction d);
-  void retirerPion(int x, int y);
-  void pivoterPion(int x, int y, Direction d);
-  void deplacer(int x, int y, int dx, int dy);
-  void afficher();
+  bool EstVide(int x, int y);
+  bool EstDeType(int x, int y, TypePion t);
+  void AjouterPion(int x, int y, TypePion t, Direction d);
+  void RetirerPion(int x, int y);
+  void PivoterPion(int x, int y, Direction d);
+  void Deplacer(int x, int y, int dx, int dy);
+  void Afficher();
 };
 
 #endif  // GRILLE_H

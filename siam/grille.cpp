@@ -17,38 +17,39 @@ Grille::Grille() {
   this->contenu[2][3] = new Montagne();
 }
 
-bool Grille::estVide(int x, int y) { return this->contenu[x][y]->type != VIDE; }
+bool Grille::EstVide(int x, int y) { return this->contenu[x][y]->type != VIDE; }
 
-bool Grille::estDeType(int x, int y, TypePion t) {
+bool Grille::EstDeType(int x, int y, TypePion t) {
   return this->contenu[x][y]->type == t;
 }
 
-void Grille::afficher() {
+void Grille::Afficher() {
   string vertM = "┃", vertHG = "┏", vertHD = "┓", vertBG = "┗", vertBD = "┛",
          horM = "━", horLG = "┣", horLD = "┫", horL4 = "╋", horLB = "┻",
          horLH = "┳";
 
   cout << vertHG;
-  for (int j = 0; j < 4; j++) cout << horM << horM << horLH;
-  cout << horM << horM << vertHD << endl;
+  for (int j = 0; j < 4; j++) cout << horM << horM << horM << horLH;
+  cout << horM << horM << horM << vertHD << endl;
   for (int i = 0; i < 5; i++) {
     cout << vertM;
-    for (int j = 0; j < 5; j++) cout << this->contenu[i][j]->texte() << vertM;
+    for (int j = 0; j < 5; j++) cout << this->contenu[i][j]->Texte() << vertM;
     cout << endl;
 
     if (i == 4) {
       cout << vertBG;
-      for (int j = 0; j < 4; j++) cout << horM << horM << horLB;
-      cout << horM << horM << vertBD;
+      for (int j = 0; j < 4; j++) cout << horM << horM << horM << horLB;
+      cout << horM << horM << horM << vertBD;
     } else {
-      cout << horLG << horM << horM << horL4 << horM << horM << horL4 << horM
-           << horM << horL4 << horM << horM << horL4 << horM << horM << horLD;
+      cout << horLG << horM << horM << horM << horL4 << horM << horM << horM
+           << horL4 << horM << horM << horM << horL4 << horM << horM << horM
+           << horL4 << horM << horM << horM << horLD;
     }
     cout << endl;
   }
 }
 
-void Grille::ajouterPion(int x, int y, TypePion t, Direction d) {
+void Grille::AjouterPion(int x, int y, TypePion t, Direction d) {
   switch (t) {
     case ELEPHANT:
       this->contenu[x][y] = new PionJoueur(ELEPHANT, d);
@@ -56,35 +57,23 @@ void Grille::ajouterPion(int x, int y, TypePion t, Direction d) {
     case RHINOCEROS:
       this->contenu[x][y] = new PionJoueur(RHINOCEROS, d);
       break;
-    case MONTAGNE:
-      this->contenu[x][y] = new Vide();
-      break;
-    case VIDE:
+    default:
       this->contenu[x][y] = new Vide();
       break;
   }
 }
 
-void Grille::pivoterPion(int x, int y, Direction d) {
+void Grille::PivoterPion(int x, int y, Direction d) {
   switch (d) {
-    case HAUT:
-      this->contenu[x][y]->d = d;
-      break;
-    case BAS:
-      this->contenu[x][y]->d = d;
-      break;
-    case DROITE:
-      this->contenu[x][y]->d = d;
-      break;
-    case GAUCHE:
-      this->contenu[x][y]->d = d;
     case INVALIDE:
       return;
+    default:
+      this->contenu[x][y]->d = d;
   }
 }
 
-void Grille::retirerPion(int x, int y) { this->contenu[x][y] = new Vide(); }
+void Grille::RetirerPion(int x, int y) { this->contenu[x][y] = new Vide(); }
 
-void Grille::deplacer(int x, int y, int dx, int dy) {
+void Grille::Deplacer(int x, int y, int dx, int dy) {
   this->contenu[x][y] = contenu[x + dx][y + dy];
 }

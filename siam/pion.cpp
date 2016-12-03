@@ -5,23 +5,23 @@ Pion::Pion() {
   this->type = VIDE;
 }
 
-void Pion::pivoter(Direction d) { this->d = d; }
+void Pion::Pivoter(Direction d) { this->d = d; }
 
-string Pion::texte() {
+string Pion::Texte() {
   string s = "";
   switch (this->type) {
     case VIDE:
-      return "  ";
+      return "   ";
     case MONTAGNE:
-      return "M ";
+      return " M ";
     case ELEPHANT:
-      s += "E";
+      s += " E";
       break;
     case RHINOCEROS:
-      s += "R";
+      s += " R";
       break;
     default:
-      s += "?";
+      s += " ?";
   }
 
   switch (this->d) {

@@ -1,11 +1,10 @@
 #include <iostream>
-#include "pion.h"
+#include "partie.h"
 
 using namespace std;
 
 int main(int argc, char *argv[]) {
-  cout << "Hello World!" << endl;
-  Pion *p = new Pion();
-  cout << p->texte() << endl;
+  Partie *p = new Partie();
+  p->Commencer();
   return 0;
 }

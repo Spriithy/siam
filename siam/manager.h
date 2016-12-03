@@ -11,9 +11,11 @@ class Manager {
   Manager();
   ~Manager();
 
+  void ChangerJoueur(TypePion t);
   void AjouterPion();
   void PivoterPion();
   void RetirerPion();
+  void RafraichirAffichage();
 };
 
 #endif  // MANAGER_H
