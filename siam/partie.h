@@ -10,9 +10,8 @@ class Partie {
  public:
   string j1, j2;
   int nbJ1, nbJ2, tours;
-  TypePion j;
   Manager *manager;
-  bool terminee;
+  bool terminee, rhino;
 
   Partie();
   void Commencer();

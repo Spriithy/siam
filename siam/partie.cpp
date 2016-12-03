@@ -25,15 +25,32 @@ Partie::Partie() {
 
   this->manager = new Manager();
   this->terminee = false;
+  this->rhino = false;
 }
 
 void Partie::Commencer() {
+  string s;
   for (this->tours = 0; !terminee; this->tours++) {
     this->TourSuivant();
   }
 }
 
 void Partie::TourSuivant() {
-  CLEAR();
-  this->manager->grille->Afficher();
+  this->rhino = !this->rhino;
+
+  int choix = 0;
+
+  while (choix < 1 || choix > 5) {
+    CLEAR();
+    this->manager->grille->Afficher();
+    cout << "C'est au tour des " << (this->rhino ? "Rhinoceros" : "Elephants!")
+         << " (" << (this->rhino ? j2 : j1) << ")" << endl;
+    cout << "  (1)  Entrer un pion sur le terrain" << endl;
+    cout << "  (2)  Se déplacer vers une case libre" << endl;
+    cout << "  (3)  Faire pivoter un pion" << endl;
+    cout << "  (4)  Sortir un pion" << endl;
+    cout << "  (5)  Déplacer un pion et pousser" << endl;
+    cout << "Que voulez vous faire >> ";
+    cin >> choix;
+  }
 }
