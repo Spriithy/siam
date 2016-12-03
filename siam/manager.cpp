@@ -12,33 +12,42 @@ void Manager::AjouterPion() {
   int x, y;
   char c;
   Direction d = INVALIDE;
+
+  CLEAR();
+  this->grille->afficher();
   cout << "Vous avez choisi de rentrer un pion sur la grille" << endl;
   cout << "Indiquez les coordonnées voulues" << endl;
-  cout << "Quelle colonne? ( 1,2,3,4 ou 5)" << endl;
+  cout << "Quelle colonne ? (1-5) ";
   cin >> x;
-  cout << "Quelle ligne? ( 1,2,3,4 ou 5)" << endl;
+  cout << endl << "Quelle ligne ? (1-5) ";
   cin >> y;
 
   while ((x < 0) || (x > 5) || (y < 0) || (y > 5)) {
-    cout << "les coordonnées choisies sont erronées" << endl;
+    CLEAR();
+    this->grille->afficher();
+    cout << endl << "les coordonnées choisies sont erronées" << endl;
     cout << "Vous avez choisi de rentrer un pion sur la grille" << endl;
     cout << "Indiquez les coordonnées voulues" << endl;
-    cout << "Quelle colonne? ( 1,2,3,4 ou 5)" << endl;
+    cout << "Quelle colonne ? (1-5) ";
     cin >> x;
-    cout << "Quelle ligne? ( 1,2,3,4 ou 5)" << endl;
+    cout << endl << "Quelle ligne ? (1-5) ";
     cin >> y;
   }
 
-  cout << "Quelle orientation voulez vous donner à votre pion?" << endl;
-  cout << "haut: h, bas: b, gauche: g, droite d" << endl;
+  CLEAR();
+  this->grille->afficher();
+  cout << endl << "Quelle orientation voulez vous donner à votre pion?" << endl;
+  cout << "haut: H, bas: B, gauche: G, droite: D" << endl;
   cin >> c;
 
   while (d == INVALIDE) {
+    CLEAR();
+    this->grille->afficher();
     cout << "erreur de saisis" << endl;
     cout << "Quelle orientation voulez vous donner à votre pion?" << endl;
     cout << "haut: h, bas: b, gauche: g, droite d" << endl;
     cin >> c;
-    d = convertirDirection(c);
+    CONVERTIR_DIRECTION(c, d);
   }
 
   if (this->grille->estVide(x, y)) {
@@ -51,53 +60,67 @@ void Manager::PivoterPion() {
   int x, y;
   char c;
   Direction d = INVALIDE;
+
+  CLEAR();
+  this->grille->afficher();
   cout << "vous avez choisi de changer la direction d'un de vos pions" << endl;
-  cout << "quelles sont les coordonnées de ce pion?" << endl;
-  cout << "quelle est la colonne? ( 1,2,3,4 ou 5)" << endl;
+  cout << "Indiquez les coordonnées du pion concerné" << endl;
+  cout << "Quelle colonne ? (1-5) ";
   cin >> x;
-  cout << "quelle est la ligne? ( 1,2,3,4 ou 5)" << endl;
+  cout << endl << "Quelle ligne ? (1-5) ";
   cin >> y;
 
   while ((x < 0) || (x > 5) || (y < 0) || (y > 5)) {
+    CLEAR();
+    this->grille->afficher();
     cout << "les coordonnées choisies sont erronées" << endl;
     cout << "vous avez choisi de changer la direction d'un de vos pions"
          << endl;
     cout << "Indiquez les coordonnées voulues" << endl;
-    cout << "Quelle colonne? ( 1,2,3,4 ou 5)" << endl;
+    cout << "Quelle colonne ? (1-5)" << endl;
     cin >> x;
-    cout << "Quelle ligne? ( 1,2,3,4 ou 5)" << endl;
+    cout << "Quelle ligne ? (1-5)" << endl;
     cin >> y;
   }
 
+  CLEAR();
+  this->grille->afficher();
   cout << "quelle direction voulez vous attribuer à votre pion?" << endl;
-  cout << "haut: h, bas: b, gauche: g, droite d" << endl;
+  cout << "haut: H, bas: B, gauche: G, droite D" << endl;
   cin >> c;
 
   while (d == INVALIDE) {
-    cout << "erreur de saisis" << endl;
-    cout << "Quelle orientation voulez vous donner à votre pion?" << endl;
-    cout << "haut: h, bas: b, gauche: g, droite d" << endl;
+    CLEAR();
+    this->grille->afficher();
+    cout << "erreur de saisie" << endl;
+    cout << "Quelle orientation voulez vous donner à votre pion ?" << endl;
+    cout << "haut: H, bas: B, gauche: G, droite D" << endl;
     cin >> c;
-    d = convertirDirection(c);
+    CONVERTIR_DIRECTION(c, d);
   }
 }
 
 void Manager::RetirerPion() {
   int x, y;
+
+  CLEAR();
+  this->grille->afficher();
   cout << "vous avez choisi d'enlever un pion de la grille" << endl;
   cout << "Quelles sont ses coordonnées?" << endl;
-  cout << "Quelle colonne? ( 1,2,3,4 ou 5)" << endl;
+  cout << "Quelle colonne ? (1-5) " << endl;
   cin >> x;
-  cout << "Quelle ligne? ( 1,2,3,4 ou 5)" << endl;
+  cout << "Quelle ligne ? (1-5) " << endl;
   cin >> y;
 
   while ((x < 0) || (x > 5) || (y < 0) || (y > 5)) {
+    CLEAR();
+    this->grille->afficher();
     cout << "les coordonnées choisies sont erronées" << endl;
     cout << "vous avez choisi d'enlever un pion de la grille" << endl;
     cout << "Indiquez les coordonnées voulues" << endl;
-    cout << "Quelle colonne? ( 1,2,3,4 ou 5)" << endl;
+    cout << "Quelle colonne ? (1-5)" << endl;
     cin >> x;
-    cout << "Quelle ligne? ( 1,2,3,4 ou 5)" << endl;
+    cout << "Quelle ligne ? (1-5)" << endl;
     cin >> y;
   }
 }

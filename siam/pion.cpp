@@ -6,6 +6,7 @@ Pion::Pion() {
 }
 
 void Pion::pivoter(Direction d) { this->d = d; }
+
 string Pion::texte() {
   string s = "";
   switch (this->type) {

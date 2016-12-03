@@ -78,6 +78,8 @@ void Grille::pivoterPion(int x, int y, Direction d) {
       break;
     case GAUCHE:
       this->contenu[x][y]->d = d;
+    case INVALIDE:
+      return;
   }
 }
 

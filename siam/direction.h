@@ -7,19 +7,18 @@ using namespace std;
 
 enum Direction { INVALIDE, HAUT, BAS, DROITE, GAUCHE };
 
-Direction convertirDirection(char d) {
-  switch (d) {
-    case 'H':
-      return HAUT;
-    case 'B':
-      return BAS;
-    case 'D':
-      return DROITE;
-    case 'G':
-      return GAUCHE;
-    default:
-      return INVALIDE;
+#define CONVERTIR_DIRECTION(src, dst) \
+  switch (src) {                      \
+    case 'H':                         \
+      dst = HAUT;                     \
+    case 'B':                         \
+      dst = BAS;                      \
+    case 'D':                         \
+      dst = DROITE;                   \
+    case 'G':                         \
+      dst = GAUCHE;                   \
+    default:                          \
+      dst = INVALIDE;                 \
   }
-}
 
 #endif  // DIRECTION_H
