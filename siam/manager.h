@@ -16,7 +16,7 @@ class Manager {
   void PivoterPion();
   void RetirerPion();
   void RafraichirAffichage();
-  void DeplacerCaseL();
+  void DeplacerCaseLibre();
   void PousserPion();
 };
 

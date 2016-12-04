@@ -54,5 +54,21 @@ void Partie::TourSuivant() {
     cin >> choix;
   }
 
-  cout << "";
+  switch (choix) {
+    case 1:
+      manager->AjouterPion();
+      break;
+    case 2:
+      manager->DeplacerCaseLibre();
+      break;
+    case 3:
+      manager->PivoterPion();
+      break;
+    case 4:
+      manager->RetirerPion();
+      break;
+    case 5:
+      manager->PousserPion();
+      break;
+  }
 }
