@@ -20,10 +20,9 @@
 using namespace std;
 
 class Grille {
- private:
+ public:
   Pion* contenu[5][5];  // contenu[x][y]
 
- public:
   Grille();
   bool EstVide(int x, int y);
   bool EstDeType(int x, int y, TypePion t);

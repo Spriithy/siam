@@ -4,7 +4,7 @@
 
 using namespace std;
 
-Grille::Grille() {
+Grille::Grille() {  // Déclaration de la grille avec les montagnes
   for (int i = 0; i < 5; i++) {
     for (int j = 0; j < 5; j++) {
       contenu[i][j] = new Vide();
@@ -19,10 +19,12 @@ Grille::Grille() {
 
 bool Grille::EstVide(int x, int y) { return contenu[x][y]->type == VIDE; }
 
+// on vérifie le contenu de grille
 bool Grille::EstDeType(int x, int y, TypePion t) {
   return contenu[x][y]->type == t;
 }
 
+// Affichage de la grille avec la table ASCII
 void Grille::Afficher() {
   string vertM = "|", vertHG = "+", vertHD = "+", vertBG = "+", vertBD = "+",
          horM = "-", horLG = "|", horLD = "|", horL4 = "+", horLB = "+",
@@ -49,6 +51,7 @@ void Grille::Afficher() {
   }
 }
 
+// on ajoute un pion selon son type: rhinocéros ou éléphant
 void Grille::AjouterPion(int x, int y, TypePion t, Direction d) {
   switch (t) {
     case ELEPHANT:
@@ -63,6 +66,7 @@ void Grille::AjouterPion(int x, int y, TypePion t, Direction d) {
   }
 }
 
+// on pivote le pion sur lui-meme
 void Grille::PivoterPion(int x, int y, Direction d) {
   switch (d) {
     case INVALIDE:
@@ -72,8 +76,10 @@ void Grille::PivoterPion(int x, int y, Direction d) {
   }
 }
 
+// On cree un pion de type vide pour retirer le pion existant
 void Grille::RetirerPion(int x, int y) { contenu[x][y] = new Vide(); }
 
+// dx et dy sont les coordonnees du futur emplacement du pion
 void Grille::Deplacer(int x, int y, int dx, int dy) {
   contenu[dx][dy] = contenu[x][y];
   contenu[x][y] = new Vide();

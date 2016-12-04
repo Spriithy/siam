@@ -14,10 +14,10 @@ class Manager {
   void ChangerJoueur(bool rhino);
   void AjouterPion();
   void PivoterPion();
-  void RetirerPion();
+  void RetirerPion(string message);
   void RafraichirAffichage();
   void DeplacerCaseLibre(string message);
-  void PousserPion();
+  bool PousserPion(string message);
 };
 
 #endif  // MANAGER_H

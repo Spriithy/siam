@@ -67,10 +67,13 @@ void Partie::TourSuivant() {
       manager->PivoterPion();
       break;
     case 4:
-      manager->RetirerPion();
+      manager->RetirerPion("");
       break;
     case 5:
-      manager->PousserPion();
+      if (manager->PousserPion("")) {
+        cout << "Vous avez gagné!" << endl;
+        terminee = true;
+      }
       break;
   }
 }
