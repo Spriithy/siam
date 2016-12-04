@@ -4,7 +4,7 @@
 
 using namespace std;
 
-Grille::Grille() {
+Grille::Grille() { //Déclaration de la grille avec les montagnes
   for (int i = 0; i < 5; i++) {
     for (int j = 0; j < 5; j++) {
       contenu[i][j] = new Vide();
@@ -17,13 +17,13 @@ Grille::Grille() {
   contenu[2][3] = new Montagne();
 }
 
-bool Grille::EstVide(int x, int y) { return contenu[x][y]->type != VIDE; }
+bool Grille::EstVide(int x, int y) { return contenu[x][y]->type != VIDE; } //on charche si une case est vide
 
-bool Grille::EstDeType(int x, int y, TypePion t) {
+bool Grille::EstDeType(int x, int y, TypePion t) { //on vérifie le contenu de grille
   return contenu[x][y]->type == t;
 }
 
-void Grille::Afficher() {
+void Grille::Afficher() { //Affichage de la grille avec la table ASCII
   string vertM = "|", vertHG = "+", vertHD = "+", vertBG = "+", vertBD = "+",
          horM = "-", horLG = "|", horLD = "|", horL4 = "+", horLB = "+",
          horLH = "+";
@@ -49,7 +49,7 @@ void Grille::Afficher() {
   }
 }
 
-void Grille::AjouterPion(int x, int y, TypePion t, Direction d) {
+void Grille::AjouterPion(int x, int y, TypePion t, Direction d) { //on ajoute un pion selon son type: rhinocéros ou éléphant
   switch (t) {
     case ELEPHANT:
       contenu[x][y] = new PionJoueur(ELEPHANT, d);
@@ -63,7 +63,7 @@ void Grille::AjouterPion(int x, int y, TypePion t, Direction d) {
   }
 }
 
-void Grille::PivoterPion(int x, int y, Direction d) {
+void Grille::PivoterPion(int x, int y, Direction d) { //on pivote le pion sur lui-meme
   switch (d) {
     case INVALIDE:
       return;
@@ -72,9 +72,9 @@ void Grille::PivoterPion(int x, int y, Direction d) {
   }
 }
 
-void Grille::RetirerPion(int x, int y) { contenu[x][y] = new Vide(); }
+void Grille::RetirerPion(int x, int y) { contenu[x][y] = new Vide(); } //On cree un pion de type vide pour retirer le pion existant
 
-void Grille::Deplacer(int x, int y, int dx, int dy) {
+void Grille::Deplacer(int x, int y, int dx, int dy) { //dx et dy sont les coordonnees du futur emplacement du pion
   contenu[dx][dy] = contenu[x][y];
   contenu[x][y] = new Vide();
 }
