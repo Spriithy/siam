@@ -24,9 +24,9 @@ bool Grille::EstDeType(int x, int y, TypePion t) {
 }
 
 void Grille::Afficher() {
-  string vertM = "┃", vertHG = "┏", vertHD = "┓", vertBG = "┗", vertBD = "┛",
-         horM = "━", horLG = "┣", horLD = "┫", horL4 = "╋", horLB = "┻",
-         horLH = "┳";
+  string vertM = "|", vertHG = "+", vertHD = "+", vertBG = "+", vertBD = "+",
+         horM = "-", horLG = "|", horLD = "|", horL4 = "+", horLB = "+",
+         horLH = "+";
 
   cout << vertHG;
   for (int j = 0; j < 4; j++) cout << horM << horM << horM << horLH;
