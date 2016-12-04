@@ -7,20 +7,20 @@ using namespace std;
 Grille::Grille() {
   for (int i = 0; i < 5; i++) {
     for (int j = 0; j < 5; j++) {
-      this->contenu[i][j] = new Vide();
+      contenu[i][j] = new Vide();
     }
   }
 
   // Montagnes
-  this->contenu[2][1] = new Montagne();
-  this->contenu[2][2] = new Montagne();
-  this->contenu[2][3] = new Montagne();
+  contenu[2][1] = new Montagne();
+  contenu[2][2] = new Montagne();
+  contenu[2][3] = new Montagne();
 }
 
-bool Grille::EstVide(int x, int y) { return this->contenu[x][y]->type != VIDE; }
+bool Grille::EstVide(int x, int y) { return contenu[x][y]->type != VIDE; }
 
 bool Grille::EstDeType(int x, int y, TypePion t) {
-  return this->contenu[x][y]->type == t;
+  return contenu[x][y]->type == t;
 }
 
 void Grille::Afficher() {
@@ -33,7 +33,7 @@ void Grille::Afficher() {
   cout << horM << horM << horM << vertHD << endl;
   for (int i = 0; i < 5; i++) {
     cout << vertM;
-    for (int j = 0; j < 5; j++) cout << this->contenu[i][j]->Texte() << vertM;
+    for (int j = 0; j < 5; j++) cout << contenu[i][j]->Texte() << vertM;
     cout << endl;
 
     if (i == 4) {
@@ -52,13 +52,13 @@ void Grille::Afficher() {
 void Grille::AjouterPion(int x, int y, TypePion t, Direction d) {
   switch (t) {
     case ELEPHANT:
-      this->contenu[x][y] = new PionJoueur(ELEPHANT, d);
+      contenu[x][y] = new PionJoueur(ELEPHANT, d);
       break;
     case RHINOCEROS:
-      this->contenu[x][y] = new PionJoueur(RHINOCEROS, d);
+      contenu[x][y] = new PionJoueur(RHINOCEROS, d);
       break;
     default:
-      this->contenu[x][y] = new Vide();
+      contenu[x][y] = new Vide();
       break;
   }
 }
@@ -68,12 +68,13 @@ void Grille::PivoterPion(int x, int y, Direction d) {
     case INVALIDE:
       return;
     default:
-      this->contenu[x][y]->d = d;
+      contenu[x][y]->d = d;
   }
 }
 
-void Grille::RetirerPion(int x, int y) { this->contenu[x][y] = new Vide(); }
+void Grille::RetirerPion(int x, int y) { contenu[x][y] = new Vide(); }
 
 void Grille::Deplacer(int x, int y, int dx, int dy) {
-  this->contenu[x][y] = contenu[x + dx][y + dy];
+  contenu[dx][dy] = contenu[x][y];
+  contenu[x][y] = new Vide();
 }

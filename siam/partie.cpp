@@ -10,7 +10,7 @@ Partie::Partie() {
     cin >> name;
   }
 
-  this->j1 = name;
+  j1 = name;
 
   name = "";
   while (name.length() <= 0) {
@@ -18,33 +18,33 @@ Partie::Partie() {
     cout << "Comment s'appelle le Joueur 2 (Rhinoceros) ? ";
     cin >> name;
   }
-  this->j2 = name;
+  j2 = name;
 
-  this->nbJ1 = 0;
-  this->nbJ2 = 0;
+  nbJ1 = 0;
+  nbJ2 = 0;
 
-  this->manager = new Manager();
-  this->terminee = false;
-  this->rhino = false;
+  manager = new Manager();
+  terminee = false;
+  rhino = true;
 }
 
 void Partie::Commencer() {
   string s;
-  for (this->tours = 0; !terminee; this->tours++) {
-    this->TourSuivant();
+  for (tours = 0; !terminee; tours++) {
+    TourSuivant();
   }
 }
 
 void Partie::TourSuivant() {
-  this->rhino = !this->rhino;
+  rhino = !rhino;
 
   int choix = 0;
 
   while (choix < 1 || choix > 5) {
     CLEAR();
-    this->manager->grille->Afficher();
-    cout << "C'est au tour des " << (this->rhino ? "Rhinoceros" : "Elephants!")
-         << " (" << (this->rhino ? j2 : j1) << ")" << endl;
+    manager->grille->Afficher();
+    cout << "C'est au tour des " << (rhino ? "Rhinoceros" : "Elephants!")
+         << " (" << (rhino ? j2 : j1) << ")" << endl;
     cout << "  (1)  Entrer un pion sur le terrain" << endl;
     cout << "  (2)  Se déplacer vers une case libre" << endl;
     cout << "  (3)  Faire pivoter un pion" << endl;
@@ -53,4 +53,6 @@ void Partie::TourSuivant() {
     cout << "Que voulez vous faire >> ";
     cin >> choix;
   }
+
+  cout << "";
 }
