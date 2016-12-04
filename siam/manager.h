@@ -16,6 +16,8 @@ class Manager {
   void PivoterPion();
   void RetirerPion();
   void RafraichirAffichage();
+  void DeplacerCaseL();
+  void PousserPion();
 };
 
 #endif  // MANAGER_H
