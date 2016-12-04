@@ -128,3 +128,124 @@ void Manager::RetirerPion() {
     cin >> y;
   }
 }
+
+void Manager::DeplacerCaseLibre()
+{
+    int x,y;
+    char c;
+    Direction d = INVALIDE;
+
+    cout << "vous avez choisi de deplacer votre pion vers une case libre" << endl;
+    cout << "Indiquez les coordonnées de votre pion" << endl;
+    cout << "Quelle colonne ? (1-5)" << endl;
+    cin >> x;
+    cout << "Quelle ligne ? (1-5)" << endl;
+    cin >> y;
+
+    cout<<"dans quelle direction voulez vous aller?"<<endl;
+    cout << "haut: H, bas: B, gauche: G, droite D" << endl;
+    cin >> c;
+    CONVERTIR_DIRECTION(c, d);
+
+    if ( d = HAUT)
+    {
+        while ( this->grille->EstVide(x,y-1)!= VIDE)
+        {
+            cout<<"la case choisi n'est pas vide"<<endl;
+            cout << "Indiquez les coordonnées de votre pion" << endl;
+            cout << "Quelle colonne ? (1-5)" << endl;
+            cin >> x;
+            cout << "Quelle ligne ? (1-5)" << endl;
+            cin >> y;
+
+            cout<<"dans quelle direction voulez vous aller?"<<endl;
+            cout << "haut: H, bas: B, gauche: G, droite D" << endl;
+            cin >> c;
+            CONVERTIR_DIRECTION(c, d);
+
+        }
+        else this->grille->Deplacer(x,y,x,y-1);
+    }
+
+    if ( d = BAS )
+    {
+        while ( this->grille->EstVide(x,y+1)!= VIDE)
+        {
+            cout<<"la case choisi n'est pas vide"<<endl;
+            cout << "Indiquez les coordonnées de votre pion" << endl;
+            cout << "Quelle colonne ? (1-5)" << endl;
+            cin >> x;
+            cout << "Quelle ligne ? (1-5)" << endl;
+            cin >> y;
+
+            cout<<"dans quelle direction voulez vous aller?"<<endl;
+            cout << "haut: H, bas: B, gauche: G, droite D" << endl;
+            cin >> c;
+            CONVERTIR_DIRECTION(c, d);
+
+        }
+        else this->grille->Deplacer(x,y,x,y+1);
+    }
+
+    if ( d = DROITE)
+    {
+        while ( this->grille->EstVide(x+1,y)!= VIDE)
+        {
+            cout<<"la case choisi n'est pas vide"<<endl;
+            cout << "Indiquez les coordonnées de votre pion" << endl;
+            cout << "Quelle colonne ? (1-5)" << endl;
+            cin >> x;
+            cout << "Quelle ligne ? (1-5)" << endl;
+            cin >> y;
+
+            cout<<"dans quelle direction voulez vous aller?"<<endl;
+            cout << "haut: H, bas: B, gauche: G, droite D" << endl;
+            cin >> c;
+            CONVERTIR_DIRECTION(c, d);
+
+        }
+        else this->grille->Deplacer(x,y,x+1,y);
+    }
+
+    if ( d = DROITE)
+    {
+        if ( this->grille->EstVide(x-1,y)!= VIDE)
+        {
+            cout<<"la case choisi n'est pas vide"<<endl;
+            cout << "Indiquez les coordonnées de votre pion" << endl;
+            cout << "Quelle colonne ? (1-5)" << endl;
+            cin >> x;
+            cout << "Quelle ligne ? (1-5)" << endl;
+            cin >> y;
+
+            cout<<"dans quelle direction voulez vous aller?"<<endl;
+            cout << "haut: H, bas: B, gauche: G, droite D" << endl;
+            cin >> c;
+            CONVERTIR_DIRECTION(c, d);
+
+        }
+        else this->grille->Deplacer(x,y,x-1,y);
+    }
+
+
+
+}
+
+void PousserPion()
+{
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
