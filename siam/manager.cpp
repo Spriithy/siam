@@ -216,4 +216,4 @@ void Manager::DeplacerCaseLibre() {
     grille->Deplacer(x, y, x - 1, y);
 }
 
-void PousserPion() {}
+void Manager::PousserPion() {}
