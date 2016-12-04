@@ -5,11 +5,7 @@
 #include <vector>
 #include "pion.h"
 
-#ifdef _WIN32
-#ifdef _WIN64
-#define CLEAR() system("cls")
-#endif
-#elif __APPLE__
+#ifdef __APPLE__
 #define CLEAR() system("clear")
 #elif __linux__
 #define CLEAR() system("clear")
@@ -18,7 +14,7 @@
 #elif defined(_POSIX_VERSION)
 #define CLEAR() system("clear")
 #else
-#error "COmpilateur inconnu"
+#define CLEAR() system("cls")
 #endif
 
 using namespace std;
