@@ -33,8 +33,10 @@ string Pion::Texte() {
       break;
     case DROITE:
       s += ">";
+      break;
     case GAUCHE:
       s += "<";
+      break;
     default:
       s += "?";
   }

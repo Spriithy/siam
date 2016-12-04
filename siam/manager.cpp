@@ -4,20 +4,28 @@
 
 using namespace std;
 
-Manager::Manager() { this->grille = new Grille(); }
+Manager::Manager() {
+  grille = new Grille();
+  joueur = RHINOCEROS;
+}
 
 Manager::~Manager() {}
 
-void Manager::ChangerJoueur(TypePion t) { this->joueur = t; }
+void Manager::ChangerJoueur(bool rhino) {
+  if (rhino)
+    joueur = RHINOCEROS;
+  else
+    joueur = ELEPHANT;
+}
 
 void Manager::RafraichirAffichage() {
   CLEAR();
-  this->grille->Afficher();
+  grille->Afficher();
 }
 
 void Manager::AjouterPion() {
   int x, y;
-  char c;
+  int c;
   Direction d = INVALIDE;
 
   RafraichirAffichage();
@@ -41,27 +49,31 @@ void Manager::AjouterPion() {
 
   RafraichirAffichage();
   cout << endl << "Quelle orientation voulez vous donner à votre pion?" << endl;
-  cout << "haut: H, bas: B, gauche: G, droite: D" << endl;
+  cout << "haut: 1, bas: 2, gauche: 3, droite: 4" << endl;
   cin >> c;
+  CONVERTIR_DIRECTION(c, d);
 
   while (d == INVALIDE) {
     RafraichirAffichage();
-    cout << "erreur de saisis" << endl;
+    cout << "erreur de saisie" << endl;
     cout << "Quelle orientation voulez vous donner à votre pion?" << endl;
-    cout << "haut: h, bas: b, gauche: g, droite d" << endl;
+    cout << "haut: 1, bas: 2, gauche: 3, droite: 4" << endl;
     cin >> c;
     CONVERTIR_DIRECTION(c, d);
   }
 
-  if (grille->EstVide(x, y)) {
-    grille->AjouterPion(x, y, joueur, d);
-  } else
-    ;
+  if (grille->EstVide(x - 1, y - 1)) {
+    grille->AjouterPion(x - 1, y - 1, joueur, d);
+    cout << "Le Pion a bien été ajouté!" << endl;
+  } else {
+    cout << "La case choisie n'est pas vide, ou pas en bordure!" << endl;
+    AjouterPion();
+  }
 }
 
 void Manager::PivoterPion() {
   int x, y;
-  char c;
+  int c;
   Direction d = INVALIDE;
 
   RafraichirAffichage();
@@ -86,14 +98,15 @@ void Manager::PivoterPion() {
 
   RafraichirAffichage();
   cout << "quelle direction voulez vous attribuer à votre pion?" << endl;
-  cout << "haut: H, bas: B, gauche: G, droite D" << endl;
+  cout << "haut: 1, bas: 2, gauche: 3, droite: 4" << endl;
   cin >> c;
+  CONVERTIR_DIRECTION(c, d);
 
   while (d == INVALIDE) {
     RafraichirAffichage();
     cout << "erreur de saisie" << endl;
     cout << "Quelle orientation voulez vous donner à votre pion ?" << endl;
-    cout << "haut: H, bas: B, gauche: G, droite D" << endl;
+    cout << "haut: 1, bas: 2, gauche: 3, droite: 4" << endl;
     cin >> c;
     CONVERTIR_DIRECTION(c, d);
   }
@@ -122,98 +135,90 @@ void Manager::RetirerPion() {
   }
 }
 
-void Manager::DeplacerCaseLibre() {
+void Manager::DeplacerCaseLibre(string message) {
   int x, y;
-  char c;
+  int c;
   Direction d = INVALIDE;
 
   RafraichirAffichage();
+  if (message.length() > 0) cout << message << endl;
   cout << "vous avez choisi de deplacer votre pion vers une case libre" << endl;
   cout << "Indiquez les coordonnées de votre pion" << endl;
-  cout << "Quelle colonne ? (1-5)" << endl;
+  cout << "Quelle colonne ? (1-5) ";
   cin >> x;
-  cout << "Quelle ligne ? (1-5)" << endl;
+  cout << "Quelle ligne ? (1-5) ";
   cin >> y;
 
+  if ((x < 1) || (x > 5) || (y < 1) || (y > 5)) {
+    DeplacerCaseLibre("Coordonnées invalides!");
+    return;
+  }
+
+  if (!grille->EstDeType(x - 1, y - 1, joueur)) {
+    DeplacerCaseLibre("Ce n'est pas votre pion!");
+    return;
+  }
+
+  string p = "";
+  while (p != "o" || p != "n") {
+    cout << "Voulez vous pivoter ? (o/n) ";
+    cin >> p;
+  }
+
+  if (p == "o") {
+    RafraichirAffichage();
+    cout << "Dans quelle direction voulez vous pivoter?" << endl;
+    cout << "haut: 1, bas: 2, gauche: 3, droite: 4" << endl;
+    cin >> c;
+    CONVERTIR_DIRECTION(c, d);
+
+    switch (d) {
+      case INVALIDE:
+        DeplacerCaseLibre("Direction de pivot inconnue!");
+        return;
+      default:
+        grille->PivoterPion(x - 1, y - 1, d);
+    }
+  }
+
   RafraichirAffichage();
-  cout << "dans quelle direction voulez vous aller?" << endl;
-  cout << "haut: H, bas: B, gauche: G, droite D" << endl;
+  cout << "Dans quelle direction voulez vous aller?" << endl;
+  cout << "haut: 1, bas: 2, gauche: 3, droite: 4" << endl;
   cin >> c;
   CONVERTIR_DIRECTION(c, d);
 
-  if (d == HAUT) {
-    while (grille->EstVide(x, y - 1) != VIDE) {
-      cout << "la case choisi n'est pas vide" << endl;
-      cout << "Indiquez les coordonnées de votre pion" << endl;
-      cout << "Quelle colonne ? (1-5)" << endl;
-      cin >> x;
-      cout << "Quelle ligne ? (1-5)" << endl;
-      cin >> y;
-
-      cout << "dans quelle direction voulez vous aller?" << endl;
-      cout << "haut: H, bas: B, gauche: G, droite D" << endl;
-      cin >> c;
-      CONVERTIR_DIRECTION(c, d);
-    }
-  } else
-    grille->Deplacer(x, y, x, y - 1);
-
-  if (d == BAS) {
-    while (grille->EstVide(x, y + 1) != VIDE) {
-      RafraichirAffichage();
-      cout << "la case choisi n'est pas vide" << endl;
-      cout << "Indiquez les coordonnées de votre pion" << endl;
-      cout << "Quelle colonne ? (1-5)" << endl;
-      cin >> x;
-      cout << "Quelle ligne ? (1-5)" << endl;
-      cin >> y;
-
-      RafraichirAffichage();
-      cout << "dans quelle direction voulez vous aller?" << endl;
-      cout << "haut: H, bas: B, gauche: G, droite D" << endl;
-      cin >> c;
-      CONVERTIR_DIRECTION(c, d);
-    }
-  } else
-    grille->Deplacer(x, y, x, y + 1);
-
-  if (d == DROITE) {
-    while (grille->EstVide(x + 1, y) != VIDE) {
-      RafraichirAffichage();
-      cout << "la case choisi n'est pas vide" << endl;
-      cout << "Indiquez les coordonnées de votre pion" << endl;
-      cout << "Quelle colonne ? (1-5)" << endl;
-      cin >> x;
-      cout << "Quelle ligne ? (1-5)" << endl;
-      cin >> y;
-
-      RafraichirAffichage();
-      cout << "dans quelle direction voulez vous aller?" << endl;
-      cout << "haut: H, bas: B, gauche: G, droite D" << endl;
-      cin >> c;
-      CONVERTIR_DIRECTION(c, d);
-    }
-  } else
-    grille->Deplacer(x, y, x + 1, y);
-
-  if (d == DROITE) {
-    if (grille->EstVide(x - 1, y) != VIDE) {
-      RafraichirAffichage();
-      cout << "la case choisi n'est pas vide" << endl;
-      cout << "Indiquez les coordonnées de votre pion" << endl;
-      cout << "Quelle colonne ? (1-5)" << endl;
-      cin >> x;
-      cout << "Quelle ligne ? (1-5)" << endl;
-      cin >> y;
-
-      RafraichirAffichage();
-      cout << "dans quelle direction voulez vous aller?" << endl;
-      cout << "haut: H, bas: B, gauche: G, droite D" << endl;
-      cin >> c;
-      CONVERTIR_DIRECTION(c, d);
-    }
-  } else
-    grille->Deplacer(x, y, x - 1, y);
+  switch (d) {
+    case HAUT:
+      if (y == 1) DeplacerCaseLibre("Ce pion ne peut pas monter!");
+      if (grille->EstVide(x - 1, y - 2))
+        grille->Deplacer(x - 1, y - 1, x - 1, y - 2);
+      else
+        DeplacerCaseLibre("La case du dessus n'est pas libre!");
+      return;
+    case BAS:
+      if (y == 5) DeplacerCaseLibre("Ce pion ne peut pas décendre!");
+      if (grille->EstVide(x - 1, y))
+        grille->Deplacer(x - 1, y - 1, x - 1, y);
+      else
+        DeplacerCaseLibre("La case du dessous n'est pas libre!");
+      return;
+    case GAUCHE:
+      if (x == 1) DeplacerCaseLibre("Ce pion ne peut pas aller a gauche!");
+      if (grille->EstVide(x - 2, y - 1))
+        grille->Deplacer(x - 1, y - 1, x - 2, y - 1);
+      else
+        DeplacerCaseLibre("La case a gauche n'est pas libre!");
+      return;
+    case DROITE:
+      if (x == 5) DeplacerCaseLibre("Ce pion ne peut pas aller a droite!");
+      if (grille->EstVide(x, y - 1))
+        grille->Deplacer(x - 1, y - 1, x, y - 1);
+      else
+        DeplacerCaseLibre("La case a droite n'est pas libre!");
+      return;
+    default:
+      DeplacerCaseLibre("Direction inconnue!");
+  }
 }
 
 void Manager::PousserPion() {}

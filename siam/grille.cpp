@@ -12,12 +12,12 @@ Grille::Grille() {
   }
 
   // Montagnes
-  contenu[2][1] = new Montagne();
+  contenu[1][2] = new Montagne();
   contenu[2][2] = new Montagne();
-  contenu[2][3] = new Montagne();
+  contenu[3][2] = new Montagne();
 }
 
-bool Grille::EstVide(int x, int y) { return contenu[x][y]->type != VIDE; }
+bool Grille::EstVide(int x, int y) { return contenu[x][y]->type == VIDE; }
 
 bool Grille::EstDeType(int x, int y, TypePion t) {
   return contenu[x][y]->type == t;
@@ -33,7 +33,7 @@ void Grille::Afficher() {
   cout << horM << horM << horM << vertHD << endl;
   for (int i = 0; i < 5; i++) {
     cout << vertM;
-    for (int j = 0; j < 5; j++) cout << contenu[i][j]->Texte() << vertM;
+    for (int j = 0; j < 5; j++) cout << contenu[j][i]->Texte() << vertM;
     cout << endl;
 
     if (i == 4) {

@@ -11,12 +11,12 @@ class Manager {
   Manager();
   ~Manager();
 
-  void ChangerJoueur(TypePion t);
+  void ChangerJoueur(bool rhino);
   void AjouterPion();
   void PivoterPion();
   void RetirerPion();
   void RafraichirAffichage();
-  void DeplacerCaseLibre();
+  void DeplacerCaseLibre(string message);
   void PousserPion();
 };
 

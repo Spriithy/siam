@@ -37,13 +37,14 @@ void Partie::Commencer() {
 
 void Partie::TourSuivant() {
   rhino = !rhino;
+  manager->ChangerJoueur(rhino);
 
   int choix = 0;
 
   while (choix < 1 || choix > 5) {
     CLEAR();
     manager->grille->Afficher();
-    cout << "C'est au tour des " << (rhino ? "Rhinoceros" : "Elephants!")
+    cout << "C'est au tour des " << (rhino ? "Rhinoceros!" : "Elephants!")
          << " (" << (rhino ? j2 : j1) << ")" << endl;
     cout << "  (1)  Entrer un pion sur le terrain" << endl;
     cout << "  (2)  Se déplacer vers une case libre" << endl;
@@ -59,7 +60,8 @@ void Partie::TourSuivant() {
       manager->AjouterPion();
       break;
     case 2:
-      manager->DeplacerCaseLibre();
+      manager->DeplacerCaseLibre("");
+      cout << "C'est bon ca!" << endl;
       break;
     case 3:
       manager->PivoterPion();

@@ -9,14 +9,18 @@ enum Direction { INVALIDE, HAUT, BAS, DROITE, GAUCHE };
 
 #define CONVERTIR_DIRECTION(src, dst) \
   switch (src) {                      \
-    case 'H':                         \
+    case 1:                           \
       dst = HAUT;                     \
-    case 'B':                         \
+      break;                          \
+    case 2:                           \
       dst = BAS;                      \
-    case 'D':                         \
-      dst = DROITE;                   \
-    case 'G':                         \
+      break;                          \
+    case 3:                           \
       dst = GAUCHE;                   \
+      break;                          \
+    case 4:                           \
+      dst = DROITE;                   \
+      break;                          \
     default:                          \
       dst = INVALIDE;                 \
   }
